@@ -1,16 +1,50 @@
 <speak>
   <paragraph>
     <sentence>
-      Today we don’t care about how implicit ratings have been collected. We will assume that someone is giving us implicit ratings that mean that the user probably likes this items.
+      Something important about the distribution of ratings must be noted: are users more willing to rate a product if they like it or not? <break />
+      If we plot the distribution of ratings that people are giving, putting together very good products and very bad products, on average, as expected, most users give a rating of 3 out of 5.
     </sentence>
-    <sentence> <break strength="weak"></break>
-      Normally implicit ratings are in a scale from zero to one.<break strength="x-weak"></break> Zero means you have no information. One means the user did something with the product which we assume that certifies that the user likes it.
+    <sentence>
+      Most of the ratings collected are 3 and besides that, most of the ratings will be positive and there will be very few negative ones. So normally, people are more easily convinced to rate something if they liked it. Users are more willing to share their experience for products they liked and less for products they didn’t like; this is the average behavior.
     </sentence>
-    <sentence><break strength="weak"></break>
-      From now on, we are assuming that our recommender system has either explicit or implicit ratings even if, normally, a real recommender system has both.
+    <sentence>
+      This statistical distribution doesn’t reflect the distribution of the quality of a product.
+      It is somehow related to the way people are willing to rate products. This bias of the distribution, could be present because there are these online systems which make good recommendations, so people buy good products. Partially this is true.
     </sentence>
-    <sentence><break strength="weak"></break>
-      This choice has been made because creating an algorithm which can manage both explicit and implicit ratings is not much difficult, but requires to consider a lot of technical details which are not interesting here. Some of the algorithms we use can work only with implicit ratings while other arguments are better designed for implicit ratings.
+    <sentence>
+      Think about what we do when we buy something on Amazon: suppose we’re buying a computer. We probably spend a lot of time looking at the descriptions, looking at the reviews, we try to buy a computer that probably we are going to like. If on Amazon there is plenty of bad computers, it is more likely that we are going to buy a good computer. Statistically we will have experienced more good products than bad ones, because we try to avoid bad products from the very beginning. It’s the same when watching movies. I don’t like drama movies; therefore, I avoid watching them. In this way, I somehow prevent myself to give negative rankings at the movies. This statistical bias is also related to the fact that users tend to buy good products.
+    </sentence>
+  </paragraph>
+  <paragraph>
+    <sentence>
+      Another important aspect when computing our recommendations, is to properly consider the support (i.e. how many users are we using to compute the average?).
+    </sentence>
+    <sentence>
+      Let’s suppose we want to compute the average rating of the item i, so b_i is the average rating of product i.
+      <break />
+      The simple definition of the mathematical average is the following:
+      b_i=( ∑_u▒r_ui )/N_i
+    </sentence>
+    <sentence>
+      We sum the rating that user u gave to item i, but we are taking into account only non-zero elements of the column. This is the classical definition of the average rating, but it doesn’t work very well, because if only one user rated the product, the average is not very good.
+    </sentence>
+    <sentence>
+      There is a very simple trick to correct this metric, which is to add a constant C at the divider, which is called the shrink term.
+      b_i=( ∑_u▒r_ui )/(N_i+C)
+      <break />
+      Example: Suppose C is equal to 10, there is a restaurant that has only one rating, from the owner, which rated it 5. Given the formula we would have 5/11, which, roughly speaking, is 0.5. Without shrinking, it would be of 5. If, however, we have 100 users and all of them rate 5, we would have 500/110 = which is almost 5.
+    </sentence>
+    <sentence>
+      Then it is clear that the effect of this shrink term disappears when the support is large.
+      Clearly, there are more sophisticated techniques which are based on counting the probabilities and so on, to give a technique more mathematically ground based, but at the end results obtained with a more complex approach are very similar.
+    </sentence>
+    <sentence>
+    <break />
+      Key Message: if you do not consider the support, you are going to make wrong non-personalized recommendations.
+    <break />
+    </sentence>
+    <sentence>
+      Example: If you go on TripAdvisor, by looking at the average rating provided by the platform and the single ratings of the users, you’ll see that the average TripAdvisor gives you is not the mathematical average, because it is using some corrections to consider the support. There are more sophisticated approaches and even for these basic approach, companies keep the formula secret.
     </sentence>
   </paragraph>
 </speak>

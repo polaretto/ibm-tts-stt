@@ -1,16 +1,42 @@
 <speak>
   <paragraph>
     <sentence>
-      Today we don’t care about how implicit ratings have been collected. We will assume that someone is giving us implicit ratings that mean that the user probably likes this items.
+      Today we don’t care about how implicit ratings have been collected. We will assume that someone is giving us implicit ratings that mean that the user probably likes this items. Normally implicit ratings are in a scale from zero to one. Zero means you have no information. One means the user did something with the product which we assume that certifies that the user likes it.
     </sentence>
-    <sentence> <break strength="weak"></break>
-      Normally implicit ratings are in a scale from zero to one.<break strength="x-weak"></break> Zero means you have no information. One means the user did something with the product which we assume that certifies that the user likes it.
+    <sentence>
+      From now on, we are assuming that our recommender system has either explicit or implicit ratings even if, normally, a real recommender system has both. This choice has been made because creating an algorithm which can manage both explicit and implicit ratings is not much difficult, but requires to consider a lot of technical details which are not interesting here. Some of the algorithms we use can work only with implicit ratings while other arguments are better designed for implicit ratings.
     </sentence>
-    <sentence><break strength="weak"></break>
-      From now on, we are assuming that our recommender system has either explicit or implicit ratings even if, normally, a real recommender system has both.
+  </paragraph>
+  <paragraph>
+    <sentence>
+      More formally:
+      r_ui:rating the user u gave to item i.
+      If we are dealing with implicit ratings, r_ui is either 0 or 1.
+      If we are dealing with explicit ratings, this variable can be 0, 1…5.
+      In both cases, 0 means that there is no information, therefore our goal is to predict which would be the opinion of user u on item i.
+      We can describe this as a matrix, called User Rating Matrix, where a row represents a user and a column represents an item and therefore r_ui is an element of the URM. The URM is the main input of almost all recommender systems.
     </sentence>
-    <sentence><break strength="weak"></break>
-      This choice has been made because creating an algorithm which can manage both explicit and implicit ratings is not much difficult, but requires to consider a lot of technical details which are not interesting here. Some of the algorithms we use can work only with implicit ratings while other arguments are better designed for implicit ratings.
+    <sentence>
+      However, when writing a real program, we will never write this as a matrix, because in real recommender systems this matrix is huge and it could be very hard to store it in memory.
+    </sentence>
+  </paragraph>
+  <paragraph>
+    <sentence>
+      <break />
+      Example 1.3:  Think about Amazon, where you have hundreds of millions of users and hundreds of thousands of products. How many of you rated more than 10 products on amazon? In this class only 3 people rated more than 10 products. On TripAdvisor, how many of you rated more than 10 hotels or restaurants? Only 6 of you rated more than 10 restaurants. How many restaurants over all exist on TripAdvisor? I don't know it exactly, I think there are going to be hundreds of thousands, maybe millions all over the world.
+    </sentence>
+    <sentence>
+      If you take a single user, you have hundreds of thousands of products and very few users rate more than 10 items. It means that in this matrix you have a lot of columns, because columns here are products, you have hundreds of thousands of columns and if you consider a single user (s)he will have rated only few of these products.
+    </sentence>
+    <sentence>
+      Mathematically, we have a matrix which is full of zeros, technically called sparse matrix.
+      This very sparse matrix, with a sparsity never greater than 0.1%, constitutes the main problem when dealing with recommender systems: for example, in many applications you may have one information out of one thousand items. This sparsity is bad because it makes it difficult to make predictions, but is good because, thanks to this huge number of zeros, it is possible to use more efficient representations, to save memory and computation time. It is therefore crucial to take advantage of the sparsity, otherwise it will not be possible to compute the needed results in a reasonable amount of time.
+    </sentence>
+  </paragraph>
+  <paragraph>
+    <sentence>
+      <break />
+      The main techniques we are using to build a recsys are somehow inspired by other domains like data mining, machine learning, classification and so on. Which is the biggest difference between a classical Data Mining problem and a Recommender System? It's the sparsity. In a classical classification problem or data mining problem, you have a lot of available information and you need to predict a small percentage of unknown data. Here we have the opposite: we have most of our information which is unknown, so we need to fill this matrix, this is not exactly what we are going to do, but more or less and we have a very sparse problem.
     </sentence>
   </paragraph>
 </speak>

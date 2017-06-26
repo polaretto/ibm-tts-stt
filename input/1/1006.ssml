@@ -1,16 +1,30 @@
 <speak>
   <paragraph>
     <sentence>
-      Today we don’t care about how implicit ratings have been collected. We will assume that someone is giving us implicit ratings that mean that the user probably likes this items.
+      The easiest and best way to make non-personalized recommendations is to recommend the most popular items.
+      Let’s suppose we are using explicit ratings and we want to sort the movies based on popularity, not on the average.
     </sentence>
-    <sentence> <break strength="weak"></break>
-      Normally implicit ratings are in a scale from zero to one.<break strength="x-weak"></break> Zero means you have no information. One means the user did something with the product which we assume that certifies that the user likes it.
+    <sentence>
+      From the mathematical point of view, we have to count the number of zero elements of the columns.
+      Note that we are also counting negative ratings, because if someone rated a movie one, at least that person watched the movie. So, when after counting all the non-zero elements for each column, we can take the columns with the highest result and those will be our most popular items.
     </sentence>
-    <sentence><break strength="weak"></break>
-      From now on, we are assuming that our recommender system has either explicit or implicit ratings even if, normally, a real recommender system has both.
+    <sentence>
+      From the statistical point of view, this works amazingly well, because if we recommend the top popular movies, it is highly probable that the user likes them. However, the usefulness of this prediction is very low, because, probably, the user already knows those items.
     </sentence>
-    <sentence><break strength="weak"></break>
-      This choice has been made because creating an algorithm which can manage both explicit and implicit ratings is not much difficult, but requires to consider a lot of technical details which are not interesting here. Some of the algorithms we use can work only with implicit ratings while other arguments are better designed for implicit ratings.
+    <sentence>
+      Another way to make non-personalized recommendations is recommending the products which have the highest average ratings, instead of the most popular ones. The idea is that we can compute the average rating of each product and recommend the best rated.
+      To compute the average ratings, we may use the classical mathematical average, but, as we’ll see in the next example, it doesn’t work very well.
+    </sentence>
+    <sentence>
+      <break />
+      Example: Suppose that there is one restaurant which has only one rating, provided by the owner of the restaurant. If it is 5, the average would be 5, even though, clearly, nobody would trust a restaurant with only a rating of 5. The same if the restaurant has only one rating of 1, as it may come from a competitor.
+      <break />
+    </sentence>
+    <sentence>
+      Normally users trust more the average ratings of products if a lot of people rated that product. So how do we combine this? From the mathematical point of view, the number of users who rated the product is called the support.
+    </sentence>
+    <sentence>
+      There are some statistical tools we will use to make recommendations which use a probabilistic approach and whenever we use these approaches, we must also consider the support, because, if the support is very small, we cannot be confident about the average, while if the support is very large, it is much more reliable.
     </sentence>
   </paragraph>
 </speak>

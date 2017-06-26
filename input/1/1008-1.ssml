@@ -1,0 +1,20 @@
+<speak>
+  <paragraph>
+    <sentence>
+      We can try to improve the previous formula by introducing a recommendation technique which is a kind of in between non-personalized and personalized formula. This technique is called “the global effects” technique, and it works only if we have explicit ratings.
+    </sentence>
+    <sentence>
+      It is very important for two reasons.
+      The first reason is because it is a non-personalized formula which is able to provide good quality recommendations.
+      The second reason is that this formula is kind of a building block for much more sophisticated techniques.
+      Advanced personalized techniques do not work well unless we combine them with global effects.
+    </sentence>
+    <sentence>
+      Which is one of the most important difference between recommending the most popular and the best rated? Can you apply the best rated technique if you have only implicit ratings? If you have only implicit ones, you can only use most popular, while if you have explicit ratings, you can use both.
+    </sentence>
+    <sentence>
+      Here is the key idea: normally, most of the users tend to give the same ratings. Therefore, there is a kind of average behavior of the community of users.
+      Let’s show how it works by an extensive example:
+    </sentence>
+  </paragraph>
+</speak>

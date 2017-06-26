@@ -1,0 +1,54 @@
+<speak>
+  <paragraph>
+    <sentence>
+    <break />
+      We want to know on average if a movie is a good movie or a bad movie; for doing so, we compare the average rating of this movie with respect to the average rating of all the movies.
+      Now suppose that on average the average rating for a movie is 3.5 (μ=3.5).
+      If a movie has an average rating of 3, it means that the quality of this movie is less than the average, while if it is greater, the movie is better.
+    <break />
+    </sentence>
+    <sentence>
+      The first step is that we need to compute the average rating of all the movies. We therefore make this sum:
+      μ=( ∑_i▒∑_u▒r_ui^+ )/N^+
+      Note that the + symbol denotes that we are not computing this average on the full URM, but only on the non-zero elements, because zero means we have no information (it is not a bad rating). (One of the most common error of students)
+      The second step is that we now compute a new rating for the movies, so for each user u and for each product i, we subtract the average from the rating. Again, only on the non-zero elements.
+      So, if I rated a movie 4 and the average rating for all the movies is 3.5, it means that my opinion on that movie is a little bit better than the average. From the original URM we compute a second URM where we simply remove one’s global effect:
+      r_ui^'=r_ui^+-μ
+    </sentence>
+    <sentence>
+      Now we compute a quantity, which we call b_i (but is not the same b_i as before) and it is the average rating for a movie after the normalization.
+      If this quantity is 1, it means that this movie, on average, is rated 1 point more than the average.
+      This quantity is telling us how much this movie is rated. This is called the “item bias” of the item; this bias is used to indicate that there is some value that is pushing the ratings towards some direction. This bias means that this movie has better or worst rating than the average.
+      b_i=( ∑_u▒〖r'〗_ui )/N_i
+    </sentence>
+    <sentence>
+      Up to now, this is not much different with respect to computing the best rated movies.
+      Here is an additional step: we compute a second quantity by removing from the URM the average for each movie. In the third version of the URM (r^'') we have removed the global average/ global bias, we have removed the bias of the single item.
+      〖r'〗_ui^'=r_ui^'-b_i
+      We can now compute the last term:
+      b_u=( ∑_i▒〖r''〗_ui )/N_u
+    </sentence>
+    <sentence>
+      We are computing the average of the ratings of the user. It is not the average of the ratings, but the average of the rating, once removed the global average and the item average. This is called the “user bias”.
+      Different people have psychologically different rating scales. Some people are very nice, optimistic people, so if they do not like something, they give 4. While there are some other users which are not friendly and if they like much a product, they give 3. If we take these two people and ask them which is the highest rating they give when they’re happy, we’d obtain different answers.
+      It is important, whenever we’re making recommendations, even non-personalized ones, to consider these differences in the rating scale.
+    </sentence>
+    <sentence>
+    <break />
+      Fun fact: I was reading a review on TripAdvisor days ago about a luxury hotel and there was a review from a user rating 2/10 which was complaining because the coffee machine in the room was not an espresso but it was of another kind. So according to this user’s opinion, the score of the hotel would be 2. This is an example of a user bias. This user probably was giving very low ratings to all the hotels.
+    </sentence>
+    <sentence>
+      So how do we make recommendations with the global effect? We estimate the rating that user u would give to product i by:
+      r ̃_ui=u+b_i+b_u
+    </sentence>
+    <sentence>
+      This is the final formula for the Global Effects.
+      Recap:
+        Step 1: Compute the average of the ratings (μ).
+        Step 2: Remove this quantity from the URM.
+        Step 3: Compute the average for each item (b_i).
+        Step 4: Remove this quantity from the URM.
+        Step 5: Compute the average for each user (b_u).
+    </sentence>
+  </paragraph>
+</speak>

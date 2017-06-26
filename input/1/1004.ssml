@@ -1,16 +1,30 @@
 <speak>
   <paragraph>
     <sentence>
-      Today we don’t care about how implicit ratings have been collected. We will assume that someone is giving us implicit ratings that mean that the user probably likes this items.
+      Usually we assume a one to five rating scale, however, in many application scenarios, it is not always possible to ask for the opinion of the user (these are called explicit ratings), because:
+      •	Users are not so happy to always rate items.
+      •	Annoying feedback requests result in random feedback. When designing a Recommender System, it is important not to bother the user too much.
+      •	There are many situations in which the user interface doesn’t allow to collect ratings. (Ex: traditional TV).
     </sentence>
-    <sentence> <break strength="weak"></break>
-      Normally implicit ratings are in a scale from zero to one.<break strength="x-weak"></break> Zero means you have no information. One means the user did something with the product which we assume that certifies that the user likes it.
+    <sentence>
+      Ratings can also be of a different type, called implicit ratings, which are estimates of the users’ ideas.
+      <break />
+      Example 1.1:  You buy a book from amazon, I don’t know if you liked it, but I know that somehow you did something with it. I can assume that if you buy a book, probably it’s because you like something in the description. I can therefore assume that if you buy a product it means that you like the story.
+      <break />
     </sentence>
-    <sentence><break strength="weak"></break>
-      From now on, we are assuming that our recommender system has either explicit or implicit ratings even if, normally, a real recommender system has both.
+    <sentence>
+      This assumption is not always true. Sometimes the user buys a product, tries it and is not happy about it.
+      If there are no other options available, however, we’re obliged to make this assumption.
     </sentence>
-    <sentence><break strength="weak"></break>
-      This choice has been made because creating an algorithm which can manage both explicit and implicit ratings is not much difficult, but requires to consider a lot of technical details which are not interesting here. Some of the algorithms we use can work only with implicit ratings while other arguments are better designed for implicit ratings.
+    <sentence>
+      <break />
+      Example 1.2:  Think about watching a movie on Netflix: if you watch the full movie, even if you don’t rate it, I can assume you liked it. Despite that, more sophisticated implicit assumptions can be made: suppose you start watching a movie on Netflix, and after 5 minutes you stop watching it. It is reasonable to make the hypothesis that you started watching a movie, then you discover that you don’t like it and you stop watching it. We can therefore assume that you did not like it. Again, we are not sure, you may like it but someone called you on the phone and you had to stop.
+    </sentence>
+    <sentence>
+      This kind of ratings are called implicit because we make some hypothesis about the interactions between the user and the product, to collect the implicit user opinion.
+    </sentence>
+    <sentence>
+      Whenever collecting implicit ratings, we are always more interested in knowing what the user likes, also referred as positive ratings, and this is usually a basic assumption made whenever building a recommender system.
     </sentence>
   </paragraph>
 </speak>
