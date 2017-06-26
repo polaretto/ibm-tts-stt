@@ -1,0 +1,55 @@
+<speak>
+  <paragraph>
+    <sentence>
+      Recommender algorithms can be first classified into two categories: personalized and non-personalized recommendations.
+    </sentence>
+    <sentence>
+      With non-personalized recommendations, all users receive the same recommendations. Examples are: the most popular movies, the recent music hits, the best rated hotels.
+    </sentence>
+    <sentence>
+      With personalized recommendations, different users receive different recommendations.
+      The focus of this course is on personalized recommendations, although we will use non-personalized recommendations as baselines.
+    </sentence>
+    <sentence>
+      The goal of a personalized recommender is to make “better” recommendations than non-personalized techniques (we will define how to measure if a recommendation is good or bed).
+    </sentence>
+    <sentence>
+      Moreover, we will see that there are some scenarios in which non-personalized recommendations are still a good choice. For instance, if you recommend the most popular movies, by definition, you will recommend movies that most users like.
+    </sentence>
+  </paragraph>
+  <paragraph>
+    <sentence>
+      Techniques for personalized recommendations can be further classified in a number of different categories, the most important being Content-Based Filtering and Collaborative Filtering.
+    </sentence>
+    <sentence>
+      The basic idea with Content-Based recommendations is to recommend items similar to the items a user liked in the past. For instance, if you like the movie “Indiana Jones”, the recommender system could recommend you other movies directed by the same director (Steven Spielberg) and/or with the same main actor (Harrison Ford).
+    </sentence>
+    <sentence>
+      As a second example, when you are looking at a page describing a product on the Amazon web site, you receive recommendations listing products similar to the one you are looking at.
+    </sentence>
+    <sentence>
+      Content-Based filtering has been one of the first approached used to build recommender system. One important prerequisite for Content-Based filtering to work, is to have, for each product, a list of “good quality” attributes (such as genre, director, actors in case of movies). We will see later in the course what makes an attribute a good attribute.
+    </sentence>
+    <sentence>
+      Collaborative Filtering techniques, on the contrary, do not require any item attribute to work, but relay on the opinions of a community of users.
+    </sentence>
+    <sentence>
+      The first type of collaborative recommender invented was based on user-user (or user-based) techniques. The basic idea is to search for users with similar taste, that is, users sharing the same opinion on several items.
+    </sentence>
+    <sentence>
+      As an example, if Bob and Alice have the same opinions on many movies, it is likely that, if Bob likes a movie, also Alice will like the same movie.
+      This idea seems reasonable, but we will see later in the course that the user-user approach doesn’t work always well. In many scenarios, user-based techniques fail to provide good recommendations, or are not able to provide any type of recommendation at all.
+    </sentence>
+    <sentence>
+      The second type of collaborative recommenders are item-item or item-based algorithms. Item-item collaborative filtering was first invented and used by Amazon.com in 1998. The basic idea is to calculates the similarity between each pair of items according to how many users have the same opinions on the two items.
+      For instance, if most users who liked “Indiana Jones” also liked “Star Wars”, it is highly probable that, a user who likes “Indiana Jones” will likely appreciate “Star Wars”.
+    </sentence>
+    <sentence>
+      Many commercial recommenders today rely on item-item algorithms.
+      During the Netflix competition, a new family of collaborative filtering algorithms has been invented, based on a technique called matrix factorization, which is part of a more general family of algorithms called dimensionality reduction.
+    </sentence>
+    <sentence>
+    Contrary to user-user and item-item algorithms, it is not easy to provide an intuitive explanation on how algorithms based on matrix factorization work.
+    </sentence>
+  </paragraph>
+</speak>

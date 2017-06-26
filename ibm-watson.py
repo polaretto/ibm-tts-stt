@@ -25,7 +25,7 @@ def text_to_speech(text, file_path, auth_file):
         username=username,
         password=password
     )
-    voice = 'en-US_MichaelVoice'
+    voice = 'en-US_AllisonVoice'
     accept = 'audio/wav'
     outdir = os.path.dirname(file_path)
     if not os.path.exists(outdir):
@@ -131,6 +131,15 @@ def speech_to_text_with_audio(
         {'text': text, 'audio_file': audio_output_path}
     )
 
+def get_text_file(text_file):
+
+    if text_file is not None:
+        with open(text_file, 'r') as myfile:
+            data=myfile.read().replace('\n', '')
+        return data
+    else:
+        return "Hello there!"
+
 
 if __name__ == '__main__':
 
@@ -152,6 +161,9 @@ if __name__ == '__main__':
         '-text', action='store', dest='text',
         help='Text to convert to speech')
     parser.add_argument(
+        '-inputtextfile', action='store', dest='inputtextfile',
+        help='Path to text file to convert to speech')
+    parser.add_argument(
         '-inputaudiofile', action='store', dest='inputaudiofile',
         help='Path to audio file to convert to text')
     parser.add_argument(
@@ -164,10 +176,17 @@ if __name__ == '__main__':
         # 1. Calling Text to Speech
         # Text to speech example
         if not args.text:
-            raise(ValueError, 'text value is required. Use -text argument.')
-        audio_path = text_to_speech(
-            text=args.text, file_path=args.outaudiofile,
-            auth_file=args.authfile)
+            if args.inputtextfile:
+                audio_path = text_to_speech(
+                    text=get_text_file(args.inputtextfile), file_path=args.outaudiofile,
+                    auth_file=args.authfile)
+            else:
+                raise(ValueError, 'text value is required. Use -text argument.')
+        else:
+            print ('We\'re NOT in\n')
+            audio_path = text_to_speech(
+                text=args.text, file_path=args.outaudiofile,
+                auth_file=args.authfile)
         print('Audio Path:', audio_path)
     elif args.func == 'stt':
         # 2. Calling Speech to Text
